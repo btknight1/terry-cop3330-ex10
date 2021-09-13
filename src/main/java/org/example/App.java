@@ -11,21 +11,28 @@ public class App
     {
         Scanner input = new Scanner(System.in);
         int i;
+        String sp, sq;
         double p, q;
-        final double tax = 5.5;
+        final double TAX = 5.5;
         Bill bill1 = new Bill();
 
         for(i=0; i<3; i++)
         {
+            // Be sure you explicitly convert input to numerical data before doing any calculations.
             System.out.printf("Enter the price of item %d: ", i+1);
-            p = input.nextDouble();
+            sp = input.nextLine();
+            p = Double.parseDouble(sp);
+
+            // Be sure you explicitly convert input to numerical data before doing any calculations.
             System.out.printf("Enter the quantity of item %d: ", i+1);
-            q = input.nextDouble();
+            sq = input.nextLine();
+            q = Double.parseDouble(sq);
+
             bill1.updateTotal(p*q);
         }
         System.out.printf("Subtotal: $%.2f%n", bill1.showTotal());
-        System.out.printf("Tax: $%.2f%n", bill1.showTax(tax));
-        bill1.applyTax(tax);
+        System.out.printf("Tax: $%.2f%n", bill1.showTax(TAX));
+        bill1.applyTax(TAX);
         System.out.printf("Total: $%.2f", bill1.showTotal());
     }
 }
